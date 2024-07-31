@@ -247,20 +247,17 @@ class Video2Command():
         self.command_decoder.train()
         for epoch in range(self.config.NUM_EPOCHS):
             total_loss = 0.0
-            progress_bar = tqdm(train_loader, colour="blue")
-            for i, (Xv, S, clip_names) in enumerate(progress_bar):
+            for i, (Xv, S, clip_names) in enumerate(train_loader):
                 # Mini-batch
                 Xv, S = Xv.to(self.device), S.to(self.device)
                 # Train step
                 loss = train_step(Xv, S)
                 total_loss += loss
                 # Display
-                progress_bar.set_description(
-                    "Epoch: {}/{}. Loss: {:0.4f}".format(epoch + 1, self.config.NUM_EPOCHS, loss))
-                # if i % self.config.DISPLAY_EVERY == 0:
-                    # print('Epoch {}, Iter {}, Loss {:.6f}'.format(epoch+1,
-                    #                                               i,
-                    #                                               loss))
+                if i % self.config.DISPLAY_EVERY == 0:
+                    print('Epoch {}, Iter {}, Loss {:.6f}'.format(epoch+1,
+                                                                  i,
+                                                                  loss))
             # End of epoch, save weights
             print('Total loss for epoch {}: {:.6f}'.format(epoch+1, total_loss / (i + 1)))
             if (epoch + 1) % self.config.SAVE_EVERY == 0:
