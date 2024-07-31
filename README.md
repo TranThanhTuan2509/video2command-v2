@@ -1,9 +1,12 @@
 ## Video Understanding with Video2Command
+
 A PyTorch adapted implementation of the video-to-command model described in the paper:
 
 "[Translating Videos to Commands for Robotic Manipulation with Deep Recurrent Neural Networks](https://sites.google.com/site/video2command/)" in Tensorflow.
 
-"[Watch and Act: Learning Robotic Manipulation From Visual Demonstration](https://www.researchgate.net/publication/369127059_Watch_and_Act_Learning_Robotic_Manipulation_From_Visual_Demonstration)" for the main idea of this model
+"[Watch and Act: Learning Robotic Manipulation From Visual Demonstration](https://www.researchgate.net/publication/369127059_Watch_and_Act_Learning_Robotic_Manipulation_From_Visual_Demonstration)" for this revised idea
+
+`This model was revised by Thanh Tuan in 2024`
 
 - Using both CNNs and RNNs are not enough to understand captured actions and interacted objects. According to `Watch and Act`, a new model was proposed for video understanding problems.
 
