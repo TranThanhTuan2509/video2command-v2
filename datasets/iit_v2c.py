@@ -268,8 +268,8 @@ class FeatureDataset(data.Dataset):
         Mask = []
         clip_name = list(clip.keys())[0]
         imgs_path = clip[clip_name]
-        print(clip_name)
-        print(imgs_path)
+        # print(clip_name)
+        # print(imgs_path)
         for img_path in imgs_path:
             img = self._imread(img_path)
             mask_img = self._mask(img_path)
@@ -302,8 +302,11 @@ class FeatureDataset(data.Dataset):
         if self.numpy_features:
             Xv = np.load(self.inputs[idx])
             clip_name = self.inputs[idx].split('/')[-1]
+            S = self.targets[idx]
         # Image dataset
         else:
             Xv, Mask, clip_name = self.parse_clip(self.inputs[idx])
-        S = self.targets[idx]
-        return Xv, Mask, S, clip_name
+            S = self.targets[idx]
+            return Xv, Mask, S, clip_name
+
+        return Xv, S, clip_name
