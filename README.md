@@ -13,7 +13,7 @@ A PyTorch adapted implementation of the video-to-command model described in the 
 ## Requirements
 - You first create a new Anaconda environment:
 
-      conda create -n c2v python=3.10
+      conda create -n c2v python=3.12.4
 - Activate the new environment using:
 
       conda activate c2v
