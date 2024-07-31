@@ -30,9 +30,6 @@ The *video2command* model is an Encoder-Decoder neural network that learns to ge
   </picture>
 </p>
 
-Compared to the architecture used in the [original implementation](https://github.com/nqanh/video2command), the implementation here takes more inspiration from the seq2seq architecture where we will inject the state of the video encoder directly into the command decoder instead. This promotes a 2~3% improvement in the BLEU 1-4 scores. 
-
-
 ## Experiment
 To repeat the *video2command* experiment:
 1. Clone the repository.
@@ -54,6 +51,6 @@ To repeat the *video2command* experiment:
 7. For evaluation, firstly run `evaluate_iit-v2c.py` to generate predictions given all saved checkpoints. Run `cocoeval_iit-v2c.py` to calculate scores for the predictions.
 
 # Contact
-If you have any questions or comments, please send an to 22023506@vnu.edu.vn
+If you have any questions or comments, please send an to `22023506@vnu.edu.vn`
 
-Original author contact is anh.nguyen@iit.it
+Author contact is `anh.nguyen@iit.it` or [cijang2](https://github.com/cjiang2)
