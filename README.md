@@ -46,7 +46,7 @@ To repeat the *video2command* experiment:
      - Note that the author's pre-extracted features seem to have a better quality and lead to a possible 1~2% higher metric scores.
 
 5. To begin training, run `train_iit-v2c.py`.
-   - NOTE: You need more than 50GB free space for this process if you choose training from scratch with `IIT-V2C` dataset.
+   - NOTE: You need more than 100GB free space for this process if you choose training from scratch with `IIT-V2C` dataset.
 
 7. For evaluation, firstly run `evaluate_iit-v2c.py` to generate predictions given all saved checkpoints. Run `cocoeval_iit-v2c.py` to calculate scores for the predictions.
 
