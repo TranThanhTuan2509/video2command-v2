@@ -45,11 +45,11 @@ def extract(dataset_path,
 
     # Feature extraction
     for i, (Xv, mask, S, clip_name) in enumerate(dataset):
-        print(type(Xv))
+        # print(type(Xv))
         with torch.no_grad():
             Xv = Xv.to(device)
             mask = mask.to(device)
-            print(mask.dtype)
+            # print(mask.dtype)
             print('-'*30)
             print('Processing clip {}...'.format(clip_name))
             #print(imgs_path, clip_name)
@@ -64,7 +64,8 @@ def extract(dataset_path,
             mask_outputs = model(mask)
             mask_outputs = mask_outputs.view(mask_outputs.shape[0], -1)
             print(mask_outputs.shape)
-            outputs = mask_outputs + Xv_outputs
+            outputs = torch.mul(mask_outputs, Xv_outputs)
+            print(outputs.shape)
 
             # Save into clips
             outfile_path = os.path.join(output_path, clip_name+'.npy')
