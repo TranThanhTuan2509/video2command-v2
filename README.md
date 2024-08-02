@@ -49,6 +49,25 @@ To repeat the *video2command* experiment:
    - NOTE: You need more than 100GB free space for this process if you choose training from scratch with `IIT-V2C` dataset.
 
 7. For evaluation, firstly run `evaluate_iit-v2c.py` to generate predictions given all saved checkpoints. Run `cocoeval_iit-v2c.py` to calculate scores for the predictions.
+      - In case, Java is not installed by opening your terminal and run:
+        
+      - For Ubuntu/Debian:
+        
+              sudo apt update
+        
+              sudo apt install default-jre
+   
+      - For macOS:
+        
+              brew update
+        
+              brew install openjdk
+        
+      - If Java is installed but not in your PATH, you can add it. On Linux or macOS, you can add the following lines to your ~/.bashrc or ~/.zshrc file:
+        
+              export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+        
+              export PATH=$JAVA_HOME/bin:$PATH
 
 # Contact
 If you have any questions or comments, please send an to `22023506@vnu.edu.vn`
