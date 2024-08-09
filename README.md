@@ -26,7 +26,7 @@ The *video2command* model is an Encoder-Decoder neural network that learns to ge
 
 <p align="center">
   <picture>
-    <img alt="image" src="https://github.com/TranThanhTuan2509/video2command-v2/blob/main/images/architecture.png "video2command"" width="600" height="350" style="max-width: 100%;">
+    <img alt="image" src="https://github.com/TranThanhTuan2509/video2command-v2/blob/main/images/Translation.png "video2command"" width="600" height="350" style="max-width: 100%;">
   </picture>
 </p>
 
