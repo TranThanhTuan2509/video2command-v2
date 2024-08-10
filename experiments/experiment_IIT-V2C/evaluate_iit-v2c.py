@@ -33,11 +33,11 @@ config = TestConfig()
 # Setup tf.dataset object
 vocab = pickle.load(open(os.path.join(config.CHECKPOINT_PATH, 'vocab.pkl'), 'rb'))
 annotation_file = config.MODE + '.txt'
-clips, targets, _, config = iit_v2c.parse_dataset(config, annotation_file, vocab=vocab)
-test_dataset = iit_v2c.FeatureDataset(clips, targets)
-test_loader = data.DataLoader(test_dataset, 
-                              batch_size=config.BATCH_SIZE, 
-                              shuffle=False, 
+clips, targets, actions, _, config = iit_v2c.parse_dataset(config, annotation_file, vocab=vocab)
+test_dataset = iit_v2c.FeatureDataset(clips, targets, actions)
+test_loader = data.DataLoader(test_dataset,
+                              batch_size=config.BATCH_SIZE,
+                              shuffle=False,
                               num_workers=config.WORKERS)
 config.display()
 
@@ -54,19 +54,21 @@ checkpoint_files = sorted(glob.glob(os.path.join(config.CHECKPOINT_PATH, 'saved'
 for checkpoint_file in checkpoint_files:
     epoch = int(checkpoint_file.split('_')[-1][:-4])
     v2c_model.load_weights(checkpoint_file)
-    y_pred, y_true = v2c_model.evaluate(test_loader, vocab)
+    y_pred, y_true, actions_pred, actions_true = v2c_model.evaluate(test_loader, vocab)
 
     # Save to evaluation file
     f = open(os.path.join(config.CHECKPOINT_PATH, 'prediction', 'prediction_{}.txt'.format(epoch)), 'w')
 
-    for i in range(len(y_pred)):
+    for i, (y, a) in enumerate(zip(y_pred, actions_pred)):
         #print(y_pred[i])
-        pred_command = utils.sequence_to_text(y_pred[i], vocab)
+        pred_command = utils.sequence_to_text(y, vocab)
         #print(y_true[i])
         true_command = utils.sequence_to_text(y_true[i], vocab)
         f.write('------------------------------------------\n')
         f.write(str(i) + '\n')
         f.write(pred_command + '\n')
         f.write(true_command + '\n')
+        f.write(a + '\n')
+        f.write(actions_true + '\n')
 
     print('Ready for cococaption.')

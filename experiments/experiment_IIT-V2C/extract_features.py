@@ -44,7 +44,7 @@ def extract(dataset_path,
     print('Done loading.')
 
     # Feature extraction
-    for i, (Xv, mask, S, clip_name) in enumerate(dataset):
+    for i, (Xv, mask, S, A, clip_name) in enumerate(dataset):
         # print(type(Xv))
         with torch.no_grad():
             Xv = Xv.to(device)
@@ -64,7 +64,7 @@ def extract(dataset_path,
             mask_outputs = model(mask)
             mask_outputs = mask_outputs.view(mask_outputs.shape[0], -1)
             print(mask_outputs.shape)
-            outputs = torch.mul(mask_outputs, Xv_outputs)
+            outputs = torch.cat((Xv_outputs, mask_outputs), dim=0)
             print(outputs.shape)
 
             # Save into clips
@@ -84,17 +84,17 @@ def main_iit_v2c():
     for annotation_file in annotation_files:
         # annotations = iit_v2c.load_annotations(config.DATASET_PATH, annotation_file)
         # Get torch.dataset object
-        clips, targets, vocab, config = iit_v2c.parse_dataset(config, 
+        clips, targets, actions, vocab, config = iit_v2c.parse_dataset(config,
                                                               annotation_file,
                                                               numpy_features=False)
         config.display()
-        transform = transforms.Compose([transforms.Resize((224, 224)), 
+        transform = transforms.Compose([transforms.Resize((224, 224)),
                                         transforms.ToTensor(),
                                         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])])
 
-        image_dataset = iit_v2c.FeatureDataset(clips, 
-                                               targets, 
-                                               numpy_features=False, 
+        image_dataset = iit_v2c.FeatureDataset(clips,
+                                               targets,
+                                               numpy_features=False,
                                                transform=transform)
 
         for model_name in model_names:

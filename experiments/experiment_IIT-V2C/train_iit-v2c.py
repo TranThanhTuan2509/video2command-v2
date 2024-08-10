@@ -5,12 +5,12 @@ import pickle
 import numpy as np
 import torch
 from torch.utils import data
-
 # Root directory of the project
 ROOT_DIR = os.path.abspath("../../")
 
 # Import v2c utils
 sys.path.append(ROOT_DIR)  # To find local version of the library
+# from v2c.model import *
 from v2c.model import *
 from v2c import utils
 from v2c.config import *
@@ -31,9 +31,9 @@ class TrainConfig(Config):
 config = TrainConfig()
 # Setup tf.dataset object
 annotation_file = config.MODE + '.txt'
-clips, targets, vocab, config = iit_v2c.parse_dataset(config, annotation_file)
+clips, targets, actions, vocab, config = iit_v2c.parse_dataset(config, annotation_file)
 config.display()
-train_dataset = iit_v2c.FeatureDataset(clips, targets)
+train_dataset = iit_v2c.FeatureDataset(clips, targets, actions)
 train_loader = data.DataLoader(train_dataset, 
                                batch_size=config.BATCH_SIZE, 
                                shuffle=True, 
