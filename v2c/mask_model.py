@@ -32,7 +32,7 @@ def mask_model(image_path):
             height_o = int(bottomy) - int(topy)
             area_o = width_o * height_o
             iou_score = area_o / (224 * 224)
-            if iou_score < 0.25 and score >= 0.65:
+            if iou_score < 0.6 and score >= 0.4:
                 outputs[0]['boxes'].append(output[0]['boxes'][idx])
                 outputs[0]['labels'].append(output[0]['labels'][idx])
                 outputs[0]['scores'].append(output[0]['scores'][idx])

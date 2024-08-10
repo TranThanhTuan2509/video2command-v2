@@ -25,7 +25,7 @@ class Config(object):
     BATCH_SIZE = 16
 
     # Epochs
-    NUM_EPOCHS = 200
+    NUM_EPOCHS = 1000
 
     # Saved model path
     CHECKPOINT_PATH = os.path.join('checkpoints')
@@ -34,7 +34,7 @@ class Config(object):
     DISPLAY_EVERY = 20
 
     # Save model every ? epoch
-    SAVE_EVERY = 5
+    SAVE_EVERY = 50
 
     # --------------------
     # Model hyperparameters
