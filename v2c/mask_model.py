@@ -48,14 +48,13 @@ def mask_model(image_path):
     results = iou_score(output)
     print(results[0]['labels'])
     masks = results[0]['masks'] > 0.5
-    copy = torch.zeros_like(original_image)
+    copy = torch.zeros_like(original_image, dtype=torch.uint8)
     for i in range(masks.shape[0]):
         mask = masks[i, 0].mul(255).byte().cpu()
         # Create a colored overlay for the mask
-        colored_mask = torch.zeros_like(original_image)
+        colored_mask = torch.zeros_like(original_image, dtype=torch.uint8)
         colored_mask[mask > 127] = 255
         colored_mask[mask < 127] = 0
         copy += colored_mask
     combined_image = torch.mul(copy, original_image)
-    combined_image = torch.permute(combined_image, (2, 0, 1)).float()
     return combined_image
