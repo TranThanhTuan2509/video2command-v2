@@ -335,7 +335,7 @@ class FeatureDataset(data.Dataset):
                         key=lambda x: int(x.split('.')[0].split('_')[-1]), reverse=False)
         images = [os.path.join(video_path, image) for image in images]
         for idx in range(len(images)):
-            if idx <= 29:
+            if idx < 29:
                 output.append(mask_model(images[idx + 1]) - mask_model(images[idx]))
             else:
                 output.append(mask_model(images[idx]))
