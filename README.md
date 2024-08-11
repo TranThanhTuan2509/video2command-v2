@@ -4,11 +4,11 @@ A PyTorch adapted implementation of the video-to-command model described in the 
 
 "[Sequence to Sequence – Video to Text](https://arxiv.org/pdf/1505.00487)".
 
-"[Translating Videos to Commands for Robotic Manipulation with Deep Recurrent Neural Networks](https://sites.google.com/site/video2command/)" in Tensorflow.
+"[Translating Videos to Commands for Robotic Manipulation with Deep Recurrent Neural Networks](https://sites.google.com/site/video2command/)".
 
-"[V2CNet: A Deep Learning Framework to Translate Videos to Commands for Robotic Manipulation](https://arxiv.org/pdf/1903.10869)" was adding another branch to recognize the actions
+"[V2CNet: A Deep Learning Framework to Translate Videos to Commands for Robotic Manipulation](https://arxiv.org/pdf/1903.10869)".
 
-"[Watch and Act: Learning Robotic Manipulation From Visual Demonstration](https://www.researchgate.net/publication/369127059_Watch_and_Act_Learning_Robotic_Manipulation_From_Visual_Demonstration)" for this revised idea
+"[Watch and Act: Learning Robotic Manipulation From Visual Demonstration](https://www.researchgate.net/publication/369127059_Watch_and_Act_Learning_Robotic_Manipulation_From_Visual_Demonstration)".
 
 `This model was revised by Thanh Tuan in 2024`
 
