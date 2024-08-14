@@ -65,7 +65,7 @@ To repeat the *video2command* experiment:
    - NOTE: You need more than 100GB free space for this process if you choose training from scratch with `IIT-V2C` dataset.
 
 7. For evaluation, firstly run `evaluate_iit-v2c.py` to generate predictions given all saved checkpoints. Run `cocoeval_iit-v2c.py` to calculate scores for the predictions.
-      - In case, Java is not installed by opening your terminal and run:
+      - In case, Java is not existed in your environment. Open your terminal and run these following lines:
         
       - For Ubuntu/Debian:
         
