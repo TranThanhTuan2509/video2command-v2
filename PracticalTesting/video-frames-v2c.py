@@ -51,7 +51,7 @@ def main(args):
         integer_number = int(len(os.listdir(args.save_path)) / 30)
         bonus_frames = (integer_number + 1)*30 - len(os.listdir(args.save_path))
         for _ in range(bonus_frames):
-            cv2.imwrite(os.path.join(args.save_path, 'frame_%d.png' % count), cv2.imread(os.path.join(ROOT_DIR, Config.ROOT_FOLDER, 'datasets', 'imagenet_frame.png')))  # Save into loseless *.png format
+            cv2.imwrite(os.path.join(args.save_path, 'frame_%d.png' % count), cv2.imread(os.path.join(ROOT_DIR, Config.ROOT_FOLDER, 'datasets', 'frame100000.png')))  # Save into loseless *.png format
             count += 1
 
     print('Done.')
