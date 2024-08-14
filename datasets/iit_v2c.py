@@ -171,7 +171,7 @@ def imgspath_targets_v1(annotations,
                         max_frames=30,
                         dataset_path=os.path.join('datasets', 'IIT-V2C'),
                         folder='images',
-                        synthetic_frame_path=os.path.join('imagenet_frame.png'),
+                        synthetic_frame_path=os.path.join('frame100000.png'),
                         padding_words=True):
     """
     Get training/test image-command pairs.
@@ -185,7 +185,7 @@ def imgspath_targets_v1(annotations,
                         max_frames=30,
                         dataset_path=os.path.join('datasets', 'IIT-V2C'),
                         folder='images',
-                        synthetic_frame_path=os.path.join('imagenet_frame.png')):
+                        synthetic_frame_path=os.path.join('frame100000.png')):
         """
         Helper func to parse image path from numbers.
         """
@@ -265,7 +265,7 @@ def parse_dataset(config,
                                                        dataset_path=config.DATASET_PATH,
                                                        folder='images',
                                                        synthetic_frame_path=os.path.join(config.ROOT_DIR, 'datasets',
-                                                                                         'imagenet_frame.png')
+                                                                                         'frame100000.png')
                                                        )
 
     # Build vocabulary
@@ -332,8 +332,7 @@ class FeatureDataset(data.Dataset):
         """
         output = []
         images = sorted(video_path,
-                        key=lambda x: int(x.split('.')[0].split('_')[-1]), reverse=False)
-        images = [os.path.join(video_path, image) for image in images]
+                        key=lambda x: int(x.split('/')[-1].split('.')[0].replace('frame', '')), reverse=False)
         for idx in range(len(images)):
             if idx < 29:
                 output.append(mask_model(images[idx + 1]) - mask_model(images[idx]))
@@ -413,8 +412,7 @@ class PracticalFeatureDataset(data.Dataset):
         """
         output = []
         images = sorted(video_path,
-                        key=lambda x: int(x.split('.')[0].split('_')[-1]), reverse=False)
-        images = [os.path.join(video_path, image) for image in images]
+                        key=lambda x: int(x.split('/')[-1].split('.')[0].replace('frame', '')), reverse=False)
         for idx in range(len(images)):
             if idx <= 29:
                 output.append(mask_model(images[idx + 1]) - mask_model(images[idx]))
