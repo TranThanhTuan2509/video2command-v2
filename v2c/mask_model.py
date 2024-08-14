@@ -57,4 +57,5 @@ def mask_model(image_path):
         colored_mask[mask < 127] = 0
         copy += colored_mask
     combined_image = torch.mul(copy, original_image)
+    combined_image = torch.permute(combined_image, (2, 0, 1)).float()
     return combined_image
