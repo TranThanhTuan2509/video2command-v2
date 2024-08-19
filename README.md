@@ -38,7 +38,7 @@ A PyTorch adapted implementation of the video-to-command model described in the 
   </picture>
 </p>
 
-- The new branch was adding to run simultaneously with the translation one. The main function of this branch is action recognition
+- The new branch was adding to run simultaneously with the translation one. The main function of this branch is action classification
 
 <p align="center">
   <picture>
