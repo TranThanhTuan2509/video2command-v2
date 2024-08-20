@@ -28,7 +28,7 @@ A PyTorch adapted implementation of the video-to-command model described in the 
 ## Introduction
 - The *video2command* model is an Encoder-Decoder neural network that learns to generate a short sentence which can be used to command a robot to perform various manipulation tasks. The architecture of the network is listed below:
   
-- The left side branch uses Mask-RCNN to isolate unimportance and irrelevance objects in that scene by subtracting 2 frames (the current frame and the next frame) and then fedding it through a CNN to extract the feature.
+- The left side branch uses Mask-RCNN to isolate unimportance and irrelevance objects in that scene by subtracting 2 mask frames (the current feature and the next feature) and then fedding it through a CNN to extract the new feature. This feature will complement our model by providing a visual change map that focuses solely on the altered objects
   
 - In most imitation testing cases in practice, the robot's vision comes from a fixed camera. Based on this, we know that the object's size that the robot has to handle will be less than 0.55 or 0.6 of the captured image. The robot will interact with the object that has the highest confidence score in object detection and the highest probability of being a pickable object.
 
