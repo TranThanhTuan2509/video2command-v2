@@ -10,7 +10,7 @@ A PyTorch adapted implementation of the video-to-command model described in the 
 
 "[Watch and Act: Learning Robotic Manipulation From Visual Demonstration](https://www.researchgate.net/publication/369127059_Watch_and_Act_Learning_Robotic_Manipulation_From_Visual_Demonstration)".
 
-`This model was revised by Thanh Tuan in 2024`
+`This model was replicated by Thanh Tuan`
 
 - Using both CNNs and RNNs are not enough to understand captured actions and interacted objects. According to `Watch and Act`, a new model was proposed some new methods for video understanding problems.
 
